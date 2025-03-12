@@ -52,6 +52,7 @@ public class TestEntity {
     private TestEntity2 entity2;
 
     public TestEntity() {
+        // default public constructor for entity class
     }
 
     public TestEntity2 getEntity() {

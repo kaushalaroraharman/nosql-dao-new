@@ -66,14 +66,6 @@ import java.util.Properties;
  */
 public class UpdatesTranslatorMorphiaImpl implements UpdatesTranslator<List<UpdateOperator>> {
 
-
-    /**
-     * Instantiates a new Updates translator morphia.
-     */
-    @Override
-    public void init(Properties properties) {
-    }
-
     /**
      * Translate list.
      *

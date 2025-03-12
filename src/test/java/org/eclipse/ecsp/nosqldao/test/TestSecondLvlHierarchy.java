@@ -48,6 +48,7 @@ import org.springframework.stereotype.Repository;
 @Qualifier("test123")
 public class TestSecondLvlHierarchy extends TestFirstLvlHierarchy {
     public TestSecondLvlHierarchy() {
+        // default public constructor for entity class
     }
 
     public void testing() {

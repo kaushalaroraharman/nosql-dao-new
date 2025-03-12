@@ -76,7 +76,7 @@ public class VehicleProfile implements IgniteEntity {
 
     @Override
     public void setSchemaVersion(Version version) {
-
+        // no schema version required for test class
     }
 }
 
