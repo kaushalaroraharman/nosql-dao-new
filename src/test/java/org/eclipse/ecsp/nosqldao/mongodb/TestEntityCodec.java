@@ -66,6 +66,7 @@ public class TestEntityCodec implements Codec<TestEntity> {
     private TestEntityCodec2 entity2Codec = null;
 
     public TestEntityCodec() {
+        // default public constructor
     }
 
     /**
