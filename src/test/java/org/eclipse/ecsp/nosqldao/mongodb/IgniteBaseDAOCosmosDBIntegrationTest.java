@@ -102,7 +102,7 @@ import static org.junit.Assert.assertNotNull;
 public class IgniteBaseDAOCosmosDBIntegrationTest {
 
     private static final String SOURCEDEVICEID = "sourceDeviceId";
-    
+
     @Autowired
     private EcallDAO ecallDao;
 
@@ -165,11 +165,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
 
         ecallDao.saveAll(ecall1, ecall2);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Awaitility.await().atMost(NumericConstants.THREE_THOUSAND, TimeUnit.MILLISECONDS);
         List<ECallEvent> ecallEvents = ecallDao.findByIds("ECallIdAll_1", "ECallIdAll_2");
         Assert.assertEquals(NumericConstants.TWO, ecallEvents.size());
         ecallEvents.stream().forEach(ecallEvent -> {
@@ -177,7 +173,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             Assert.assertTrue(ecallEvent.getLastUpdatedTime().isBefore(LocalDateTime.now()));
         });
     }
-    
+
     @SuppressWarnings("checkstyle:MagicNumber")
     @Test
     public void testDistinct() {
@@ -211,12 +207,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             }
             ecallDao.save(ecalli);
         }
-
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         IgniteCriteria criteria = new IgniteCriteria("eventId", Operator.EQ, "ECall");
         IgniteCriteriaGroup criteriaGroup = new IgniteCriteriaGroup(criteria);
         IgniteQuery query = new IgniteQuery(criteriaGroup);
@@ -244,12 +234,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             ecalli.setVehicleId("Vehicle_" + i);
             ecalli.setVersion(com.harman.ignite.domain.Version.V1_0);
             ecallDao.save(ecalli);
-        }
-
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         IgniteCriteria igniteCriteria = new IgniteCriteria("eventId", Operator.EQ, "ECall");
@@ -299,12 +283,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             ecalli.setVersion(com.harman.ignite.domain.Version.V1_0);
             ecallDao.save(ecalli);
         }
-
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         IgniteCriteria igniteCriteria = new IgniteCriteria("eventId", Operator.EQ, "ECall");
         IgniteCriteriaGroup icg = new IgniteCriteriaGroup(igniteCriteria);
         IgniteQuery igniteQuery = new IgniteQuery(icg);
@@ -345,11 +323,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         // 1. Insert if not present
         boolean upsertFlag = false;
         upsertFlag = ecallDao.upsert(igniteQuery, ecall1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Awaitility.await().atMost(NumericConstants.THREE_THOUSAND, TimeUnit.MILLISECONDS);
         List<ECallEvent> ecallEventList = ecallDao.findByIds("ECallIdAll_1");
         Assert.assertTrue(upsertFlag && (ecallEventList.size() > 0));
@@ -360,6 +333,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         // 2. Update fields existing records.
         ECallEvent ecall2 = geteCallEvent();
+
         ecall2.setHits(NumericConstants.HITS);
         igniteCriteria = new IgniteCriteria("ecallId", Operator.EQ, "ECallIdAll_1");
         icg = new IgniteCriteriaGroup(igniteCriteria);
@@ -367,9 +341,8 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         try {
             upsertFlag = ecallDao.upsert(igniteQuery, ecall2);
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (DuplicateKeyException | InterruptedException e) {
-            e.printStackTrace();
+        } catch (DuplicateKeyException dke) {
+            dke.printStackTrace();
         }
         ecallEventList = ecallDao.findByIds("ECallIdAll_1");
         Awaitility.await().atMost(NumericConstants.THREE_THOUSAND, TimeUnit.MILLISECONDS);
@@ -380,6 +353,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         // 3. Duplicate key exception;
         ECallEvent ecall3 = getEvent();
+
         igniteCriteria = new IgniteCriteria("ecallId", Operator.EQ, "ECallIdAll_1");
         IgniteCriteria igniteCriteria2 = new IgniteCriteria("eventId",
                 Operator.EQ, " NO_ECall");
@@ -448,11 +422,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
         ecallDao.save(ecall);
 
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent saveEcallUpdated = ecallDao.findById("ECallId_Update_1");
 
         LocalDateTime saveLastUpdatedTime = saveEcallUpdated.getLastUpdatedTime();
@@ -461,11 +430,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         ecall.setSourceDeviceId("Device_1_Updated");
         ecallDao.update(ecall);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent ecallUpdated = ecallDao.findById("ECallId_Update_1");
         Assert.assertEquals("Device_1_Updated", (ecallUpdated.getSourceDeviceId()));
 
@@ -498,11 +462,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setCustomParams(inventory);
         ecallDao.save(ecall);
 
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         //Assert that the map of map type field got saved successfully
         ECallEvent savedEntity = ecallDao.findById("ECallId_Update_1");
         Assert.assertEquals("123", savedEntity.getCustomParams().get("inventory").get("data"));
@@ -560,11 +519,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         ecallDao.saveAll(ecall1, ecall2);
 
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent saveEcallUpdated1 = ecallDao.findById("ECallId_UpdateAll_1");
         ECallEvent saveEcallUpdated2 = ecallDao.findById("ECallId_UpdateAll_2");
 
@@ -579,11 +533,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setSourceDeviceId("Device_1_Updated");
         ecall2.setSourceDeviceId("Device_2_Updated");
         ecallDao.updateAll(ecall1, ecall2);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent ecallUpdated1 = ecallDao.findById("ECallId_UpdateAll_1");
         ECallEvent ecallUpdated2 = ecallDao.findById("ECallId_UpdateAll_2");
         Assert.assertEquals("Device_1_Updated", ecallUpdated1.getSourceDeviceId());
@@ -622,11 +571,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         ecallDao.saveAll(ecall1, ecall2);
 
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         IgniteCriteria c1 = new IgniteCriteria("vehicleId", Operator.EQ, "Vehicle_1");
         IgniteCriteria c2 = new IgniteCriteria("vehicleId", Operator.EQ, "Vehicle_2");
         IgniteCriteriaGroup cg1 = new IgniteCriteriaGroup(c1).or(c2);
@@ -654,19 +598,9 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsIncr() {
         ECallEvent e1 = createUOEntity("ECallId_UO_Inc");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Updates u = new Updates();
         u.addIncr("hits");
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_Inc");
         Assert.assertEquals(1, e2.getHits());
     }
@@ -675,19 +609,9 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsIncrBy() {
         ECallEvent e1 = createUOEntity("ECallId_UO_Inc");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Updates u = new Updates();
         u.addIncr("hits", NumericConstants.TWO);
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_Inc");
         Assert.assertEquals(NumericConstants.TWO, e2.getHits());
     }
@@ -696,11 +620,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsDec() {
         ECallEvent e1 = createUOEntity("ECallId_UO_Dec");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         ECallEvent savedE1 = ecallDao.findById("ECallId_UO_Dec");
 
@@ -711,11 +630,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         Updates u = new Updates();
         u.addDecr("dunks");
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_Dec");
         Assert.assertEquals(NumericConstants.MINUS_ONE, e2.getDunks());
 
@@ -729,11 +643,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ECallEvent e1 = createUOEntity("ECallId_UO_Dec");
         e1.setDunks(NumericConstants.LONG_TEN);
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         Updates u = new Updates();
         u.addDecr("dunks", NumericConstants.TWO);
@@ -746,19 +655,9 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsFieldSet() {
         ECallEvent e1 = createUOEntity("ECallId_UO_FieldSet");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Updates u = new Updates();
         u.addFieldSet(SOURCEDEVICEID, "Device_1_updated");
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_FieldSet");
         Assert.assertEquals("Device_1_updated", e2.getSourceDeviceId());
     }
@@ -767,19 +666,9 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsFieldUnset() {
         ECallEvent e1 = createUOEntity("ECallId_UO_FieldUnset");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Updates u = new Updates();
         u.addFieldUnset(SOURCEDEVICEID);
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_FieldUnset");
         Assert.assertNull(e2.getSourceDeviceId());
     }
@@ -788,11 +677,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsListMod() {
         ECallEvent e1 = createUOEntity("ECallId_UO_List");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Updates u = new Updates();
         u.addListAppend("listAttr1", "Hello");
         // this should take effect, not the one above
@@ -800,11 +684,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         List<Object> strings = Arrays.asList(new String[] { "Hello", "World" });
         u.addListAppendMulti("listAttr2", strings);
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_List");
         // We can add only one entry to the list if we pass individual objects
         Assert.assertFalse(e2.getListAttr1().contains("Hello"));
@@ -818,11 +697,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsSetMod() {
         ECallEvent e1 = createUOEntity("ECallId_UO_Set");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Updates u = new Updates();
         u.addSetAppend("setAttr1", "12");
         u.addSetAppend("setAttr1", "12");
@@ -832,11 +706,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         stringsSet.add("13");
         u.addSetAppendMulti("setAttr2", stringsSet);
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_Set");
         // 12 will be lost
         Assert.assertFalse(e2.getSetAttr1().contains("12"));
@@ -851,11 +720,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
     public void testUpdateOperationsCombined() {
         ECallEvent e1 = createUOEntity("ECallId_UO_ALL");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Updates u = new Updates();
         u.addFieldSet(SOURCEDEVICEID, "Device_1_updated");
         u.addIncr("hits");
@@ -872,11 +736,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         stringsSet.add("13");
         u.addSetAppendMulti("setAttr2", stringsSet);
         ecallDao.update(e1.getEcallId(), u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent e2 = ecallDao.findById("ECallId_UO_ALL");
         Assert.assertEquals("Device_1_updated", e2.getSourceDeviceId());
         Assert.assertEquals(1, e2.getHits());
@@ -902,11 +761,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         Assert.assertEquals(0, events.size());
         ECallEvent e1 = createUOEntity("ECallId_FIND_ALL_1");
         ecallDao.save(e1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         events = ecallDao.findAll();
         Assert.assertEquals(1, events.size());
         Assert.assertEquals(e1.getEcallId(), events.get(0).getEcallId());
@@ -940,11 +794,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setVehicleId("Vehicle_1");
         ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
         ecallDao.save(ecall);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent ecallOut = ecallDao.findById("ECallId_ByteBuffer1");
         assertEquals("Error in converting ByteBuffer", ecall.getBytesBuffer(), ecallOut.getBytesBuffer());
     }
@@ -970,16 +819,11 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
         ecall.setEntity(entity);
         ecallDao.save(ecall);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent ecallOut = ecallDao.findById("ECallId_ByteBuffer1");
 
         TestEntity actualEntity = ecallOut.getEntity();
         TestEntity2 actualEntity2 = actualEntity.getEntity();
-        
+
         Assert.assertEquals(actualEntity.getId(), entity.getId());
         Assert.assertEquals(actualEntity2.getId(), actualEntity2.getId());
         Assert.assertEquals(actualEntity.getName(), entity.getName());
@@ -1066,11 +910,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         aus.add(au2);
         ecall.setAuthorizedUsers(aus);
         ecallDao.save(ecall);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         ECallEvent ecallGot = ecallDao.findById("ECallId_1");
         Assert.assertEquals(ecallGot.getEcallId(), ecall.getEcallId());
         Assert.assertEquals(NumericConstants.TWO, ecallGot.getAuthorizedUsers().size());
@@ -1081,11 +920,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         IgniteCriteriaGroup igniteCriteriaGroup = new IgniteCriteriaGroup(makeCriteria);
         IgniteQuery query = new IgniteQuery(igniteCriteriaGroup);
         boolean result = ecallDao.removeAll(query, u);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(result);
         ecallGot = ecallDao.findById("ECallId_1");
         Assert.assertEquals(1, ecallGot.getAuthorizedUsers().size());
@@ -1224,11 +1058,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setVehicleId("Vehicle_1");
         ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
         ecallDao.save(ecall);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         ECallEvent ecall1 = new ECallEvent();
         ecall1.setEcallId("ECallId_2");
@@ -1239,11 +1068,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setVehicleId("Vehicle_1");
         ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
         ecallDao.save(ecall1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         ECallEvent ecallGot = ecallDao.findById("ECallId_1");
         Assert.assertEquals("ECallId_1", ecallGot.getEcallId());
@@ -1253,11 +1077,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         boolean result = ecallDao.delete(ecallGot);
         Assert.assertTrue(result);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         ecallGot = ecallDao.findById("ECallId_1");
         Assert.assertEquals(null, ecallGot);
@@ -1376,11 +1195,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
 
         ecallDao.saveAll(ecall1);
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         IgniteCriteria c1 = new IgniteCriteria("vehicleId", Operator.EQI, "veHICle_1");
         IgniteCriteriaGroup cg1 = new IgniteCriteriaGroup(c1);
@@ -1476,11 +1290,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             ecalls.add(ecall);
         }
         ecallDao.saveAll(ecalls.toArray(new ECallEvent[NumericConstants.FIVE]));
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         IgniteCriteria c1 = new IgniteCriteria("vehicleId", Operator.EQ, "VehicleOrderBy");
         IgniteCriteriaGroup cg1 = new IgniteCriteriaGroup(c1);
         IgniteQuery igQuery = new IgniteQuery(cg1);
