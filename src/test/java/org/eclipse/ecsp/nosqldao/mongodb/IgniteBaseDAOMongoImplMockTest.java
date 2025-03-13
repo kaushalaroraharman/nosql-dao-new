@@ -166,7 +166,7 @@ public class IgniteBaseDAOMongoImplMockTest {
                 .thenReturn(query);
 
         long count = testDAOMongoImpl.countByQuery(igniteQuery);
-        Assert.assertEquals(new Long(1), new Long(count));
+        Assert.assertEquals(Long.valueOf(1), Long.valueOf(count));
         Mockito.verify(query, Mockito.times(1)).count();
     }
 
