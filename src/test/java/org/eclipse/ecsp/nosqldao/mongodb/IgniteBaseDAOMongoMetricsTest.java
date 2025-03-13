@@ -91,7 +91,6 @@ public class IgniteBaseDAOMongoMetricsTest {
         Properties daoProperties = new Properties();
         daoProperties.load(IgniteBaseDAOMongoMetricsTest.class.getResourceAsStream(
                 "/ignite-dao-metrics-enabled.properties"));
-        customCollection = mockDao.getOverridingCollectionName();
     }
 
     @Test
