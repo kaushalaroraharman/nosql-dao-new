@@ -66,8 +66,6 @@ import java.util.Properties;
 @TestPropertySource("/ignite-dao.properties")
 public class IgniteBaseDAOHealthMonitorTest {
 
-    private static final String SOURCEDEVICEID = "sourceDeviceId";
-
     @ClassRule
     public static EmbeddedMongoDB embeddedMongoDB = new EmbeddedMongoDB();
 

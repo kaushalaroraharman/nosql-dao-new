@@ -56,7 +56,6 @@ import org.eclipse.ecsp.nosqldao.ecall.TestEntity2;
  */
 public class TestEntityCodec2 implements Codec<TestEntity2> {
     private static final IgniteLogger LOGGER = IgniteLoggerFactory.getLogger(TestEntityCodec2.class);
-    private CodecRegistry registry = null;
     private Codec<Integer> integerCodec = null;
     private Codec<String> stringCodec = null;
 
