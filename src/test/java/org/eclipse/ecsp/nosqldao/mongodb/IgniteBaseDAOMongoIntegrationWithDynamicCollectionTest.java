@@ -311,11 +311,11 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         igniteQuery = new IgniteQuery(icg);
         boolean duplicateKeyException = false;
         try {
-            upsertFlag = mockDao.upsert(igniteQuery, ecall3);
+            mockDao.upsert(igniteQuery, ecall3);
         } catch (MongoWriteException dke) {
             duplicateKeyException = true;
         }
-        ecallEventList = mockDao.findByIds("ECallIdAll_9");
+        mockDao.findByIds("ECallIdAll_9");
         Assert.assertTrue(duplicateKeyException);
     }
 

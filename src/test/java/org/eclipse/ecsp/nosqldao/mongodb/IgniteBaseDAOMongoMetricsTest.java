@@ -85,8 +85,6 @@ public class IgniteBaseDAOMongoMetricsTest {
     @Autowired
     private AdvancedDatastore datastore;
 
-    private String customCollection = "customEcall";
-
     /** Setup method. */
     @Before
     public void setupEcallDAO() throws IOException {

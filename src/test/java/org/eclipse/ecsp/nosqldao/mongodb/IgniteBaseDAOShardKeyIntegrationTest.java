@@ -72,8 +72,6 @@ import static org.junit.Assert.assertNotNull;
 @TestPropertySource("/ignite-dao-shardkey-collection.properties")
 public class IgniteBaseDAOShardKeyIntegrationTest {
 
-    private static final String SOURCEDEVICEID = "sourceDeviceId";
-
     @ClassRule
     public static EmbeddedMongoDB embeddedMongoDB = new EmbeddedMongoDB();
 

@@ -384,13 +384,13 @@ public class IgniteBaseDAOMongoIntegrationTest {
         igniteQuery = new IgniteQuery(icg);
         boolean duplicateKeyException = false;
         try {
-            upsertFlag = ecallDao.upsert(igniteQuery, ecall3);
+            ecallDao.upsert(igniteQuery, ecall3);
         } catch (Exception dke) {
             if (dke instanceof MongoWriteException) {
                 duplicateKeyException = true;
             }
         }
-        ecallEventList = ecallDao.findByIds("ECallIdAll_1");
+        ecallDao.findByIds("ECallIdAll_1");
         Assert.assertTrue(duplicateKeyException);
     }
 
@@ -877,8 +877,6 @@ public class IgniteBaseDAOMongoIntegrationTest {
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
         ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
-        BytesBuffer buffer = new BytesBuffer("Test".getBytes());
-        //ecall.setBytesBuffer(buffer);
         ecallDao.save(ecall);
         ECallEvent ecallOut = ecallDao.findById("ECallId_ByteBuffer1");
         assertEquals("Error in converting ByteBuffer", ecall.getBytesBuffer(), ecallOut.getBytesBuffer());
