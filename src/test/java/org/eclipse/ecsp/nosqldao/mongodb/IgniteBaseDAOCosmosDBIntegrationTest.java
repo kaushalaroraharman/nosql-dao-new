@@ -345,7 +345,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         // 1. Insert if not present
         boolean upsertFlag = false;
         upsertFlag = ecallDao.upsert(igniteQuery, ecall1);
-
         try {
             Thread.sleep(NumericConstants.THREE_K);
         } catch (InterruptedException e) {
@@ -361,7 +360,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         // 2. Update fields existing records.
         ECallEvent ecall2 = geteCallEvent();
-
         ecall2.setHits(NumericConstants.HITS);
         igniteCriteria = new IgniteCriteria("ecallId", Operator.EQ, "ECallIdAll_1");
         icg = new IgniteCriteriaGroup(igniteCriteria);
@@ -369,12 +367,8 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         try {
             upsertFlag = ecallDao.upsert(igniteQuery, ecall2);
-        } catch (DuplicateKeyException dke) {
-            dke.printStackTrace();
-        }
-        try {
             Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
+        } catch (DuplicateKeyException | InterruptedException e) {
             e.printStackTrace();
         }
         ecallEventList = ecallDao.findByIds("ECallIdAll_1");
@@ -386,7 +380,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
 
         // 3. Duplicate key exception;
         ECallEvent ecall3 = getEvent();
-
         igniteCriteria = new IgniteCriteria("ecallId", Operator.EQ, "ECallIdAll_1");
         IgniteCriteria igniteCriteria2 = new IgniteCriteria("eventId",
                 Operator.EQ, " NO_ECall");
@@ -399,11 +392,6 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             if (dke instanceof MongoWriteException) {
                 duplicateKeyException = true;
             }
-        }
-        try {
-            Thread.sleep(NumericConstants.THREE_K);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         ecallDao.findByIds("ECallIdAll_1");
         Assert.assertTrue(duplicateKeyException);
