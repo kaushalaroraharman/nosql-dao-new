@@ -97,7 +97,7 @@ public class IgniteBaseDAOHealthMonitorTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         try {
             ecallDao.save(ecall);
         } catch (Exception dke) {

@@ -127,7 +127,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         mockEvent.setRequestId("Request_1");
         mockEvent.setTimestamp(NumericConstants.TIMESTAMP);
         mockEvent.setVehicleId("Vehicle_1");
-        mockEvent.setVersion(com.harman.ignite.domain.Version.V1_0);
+        mockEvent.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(mockEvent);
         MockTestEvent mockGot = mockDao.findById("ECallId_1");
         Assert.assertEquals(mockGot.getId(), mockEvent.getId());
@@ -144,7 +144,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         mockEvent.setRequestId("Request_1");
         mockEvent.setTimestamp(NumericConstants.TIMESTAMP);
         mockEvent.setVehicleId("Vehicle_1");
-        mockEvent.setVersion(com.harman.ignite.domain.Version.V1_0);
+        mockEvent.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(mockEvent);
         MockTestEvent mockGot = mockDao.findById("ECallId_1");
         Assert.assertEquals(mockGot.getId(), mockEvent.getId());
@@ -164,7 +164,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         mockEvent.setRequestId("Request_1");
         mockEvent.setTimestamp(NumericConstants.TIMESTAMP);
         mockEvent.setVehicleId("Vehicle_1");
-        mockEvent.setVersion(com.harman.ignite.domain.Version.V1_0);
+        mockEvent.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(mockEvent);
         MockTestEvent mockGot = mockDao.findById("ECallId_1");
         Assert.assertEquals(mockGot.getId(), (mockEvent.getId()));
@@ -176,7 +176,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         mockEvent2.setRequestId("Request_1");
         mockEvent2.setTimestamp(NumericConstants.TIMESTAMP);
         mockEvent2.setVehicleId("Vehicle_1");
-        mockEvent2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        mockEvent2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(mockEvent2);
         MockTestEvent mockGot2 = mockDao.findById("ECallId_2");
         Assert.assertEquals(mockGot2.getId(), mockEvent2.getId());
@@ -198,7 +198,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         MockTestEvent ecall2 = new MockTestEvent();
         ecall2.setId("ECallIdAll_2");
@@ -207,7 +207,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_1");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         mockDao.saveAll(ecall1, ecall2);
 
@@ -230,7 +230,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         MockTestEvent ecall2 = new MockTestEvent();
         ecall2.setSourceDeviceId("Device_2");
@@ -238,7 +238,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_1");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         List<MockTestEvent> eventSaved = mockDao.saveAll(ecall1, ecall2);
         Assert.assertEquals(NumericConstants.TWO, eventSaved.size());
@@ -302,7 +302,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall3.setRequestId("Request_2");
         ecall3.setTimestamp(NumericConstants.TIMESTAMP);
         ecall3.setVehicleId("Vehicle_2");
-        ecall3.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall3.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         igniteCriteria = new IgniteCriteria("ecallId", Operator.EQ, "ECallIdAll_9");
         IgniteCriteria igniteCriteria2 = new IgniteCriteria("eventId",
@@ -329,7 +329,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_2");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecall2.setHits(NumericConstants.HITS);
         return ecall2;
     }
@@ -344,7 +344,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall1.setRequestId(Request_1);
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId(Vehicle_1);
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         return ecall1;
     }
 
@@ -357,7 +357,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(ecall);
         ecall.setSourceDeviceId("Device_1_Updated");
         mockDao.update(ecall);
@@ -377,7 +377,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         MockTestEvent ecall2 = new MockTestEvent();
         ecall2.setId("ECallId_UpdateAll_2");
@@ -386,7 +386,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_2");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         mockDao.saveAll(ecall1, ecall2);
         ecall1.setSourceDeviceId("Device_1_Updated");
@@ -415,7 +415,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         MockTestEvent ecall2 = new MockTestEvent();
         ecall2.setId("ECallId_UpdateAll_2");
@@ -424,7 +424,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_2");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         mockDao.saveAll(ecall1, ecall2);
 
@@ -536,7 +536,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1_" + id);
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         return ecall;
     }
 
@@ -550,7 +550,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(ecall);
 
         MockTestEvent ecall1 = new MockTestEvent();
@@ -560,7 +560,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall1.setRequestId("Request_2");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(ecall1);
 
         MockTestEvent ecallGot = mockDao.findById("ECallId_1");
@@ -582,7 +582,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         mockDao.saveAll(ecall1);
 
@@ -679,7 +679,7 @@ public class IgniteBaseDAOMongoIntegrationWithDynamicCollectionTest {
         mockEvent.setTimestamp(NumericConstants.TIMESTAMP);
         mockEvent.setVehicleId("Vehicle_1");
         mockEvent.setTargetDeviceId("device1");
-        mockEvent.setVersion(com.harman.ignite.domain.Version.V1_0);
+        mockEvent.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(mockEvent);
         MockTestEvent mockGot = mockDao.findById("ECallId_1");
         Assert.assertEquals(mockGot.getId(), (mockGot.getId()));

@@ -40,8 +40,8 @@
 
 package org.eclipse.ecsp.nosqldao;
 
-import com.harman.ignite.diagnostic.DiagnosticData;
-import com.harman.ignite.diagnostic.DiagnosticReporter;
+import org.eclipse.ecsp.diagnostic.DiagnosticData;
+import org.eclipse.ecsp.diagnostic.DiagnosticReporter;
 import org.eclipse.ecsp.nosqldao.utils.PropertyNames;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

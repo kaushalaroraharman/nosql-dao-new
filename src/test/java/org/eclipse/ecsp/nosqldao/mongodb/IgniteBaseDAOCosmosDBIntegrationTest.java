@@ -135,7 +135,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall);
         Awaitility.await().atMost(NumericConstants.THREE_THOUSAND, TimeUnit.MILLISECONDS);
         ECallEvent ecallGot = ecallDao.findById("ECallId_1");
@@ -153,7 +153,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ECallEvent ecall2 = new ECallEvent();
         ecall2.setEcallId("ECallIdAll_2");
@@ -162,7 +162,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_1");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ecallDao.saveAll(ecall1, ecall2);
         Awaitility.await().atMost(NumericConstants.THREE_THOUSAND, TimeUnit.MILLISECONDS);
@@ -186,7 +186,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             ecalli.setEventId("ECall");
             ecalli.setRequestId("Request_" + i);
             ecalli.setTimestamp(NumericConstants.TIMESTAMP);
-            ecalli.setVersion(com.harman.ignite.domain.Version.V1_0);
+            ecalli.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
             switch (i) {
                 case 1:
                     ecalli.setVehicleId("Vehicle_4");
@@ -232,7 +232,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             ecalli.setRequestId("Request_" + i);
             ecalli.setTimestamp(NumericConstants.TIMESTAMP);
             ecalli.setVehicleId("Vehicle_" + i);
-            ecalli.setVersion(com.harman.ignite.domain.Version.V1_0);
+            ecalli.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
             ecallDao.save(ecalli);
         }
 
@@ -280,7 +280,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             ecalli.setRequestId("Request_" + i);
             ecalli.setTimestamp(NumericConstants.TIMESTAMP);
             ecalli.setVehicleId("Vehicle_" + i);
-            ecalli.setVersion(com.harman.ignite.domain.Version.V1_0);
+            ecalli.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
             ecallDao.save(ecalli);
         }
         IgniteCriteria igniteCriteria = new IgniteCriteria("eventId", Operator.EQ, "ECall");
@@ -380,7 +380,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall3.setRequestId("Request_2");
         ecall3.setTimestamp(NumericConstants.TIMESTAMP);
         ecall3.setVehicleId("Vehicle_2");
-        ecall3.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall3.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         return ecall3;
     }
 
@@ -393,7 +393,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         return ecall1;
     }
 
@@ -406,7 +406,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_2");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         return ecall2;
     }
 
@@ -419,7 +419,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall);
 
         ECallEvent saveEcallUpdated = ecallDao.findById("ECallId_Update_1");
@@ -447,7 +447,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecall.setCounter(NumericConstants.TEN);
         ecall.setTimestamp(NumericConstants.NINE_EIGHT_SEVEN);
         ecall.setDoubleData(NumericConstants.DATA);
@@ -506,7 +506,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ECallEvent ecall2 = new ECallEvent();
         ecall2.setEcallId("ECallId_UpdateAll_2");
@@ -515,7 +515,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_2");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ecallDao.saveAll(ecall1, ecall2);
 
@@ -558,7 +558,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ECallEvent ecall2 = new ECallEvent();
         ecall2.setEcallId("ECallId_UpdateAll_2");
@@ -567,7 +567,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_2");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ecallDao.saveAll(ecall1, ecall2);
 
@@ -779,7 +779,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1_" + id);
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         return ecall;
     }
 
@@ -792,7 +792,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall);
         ECallEvent ecallOut = ecallDao.findById("ECallId_ByteBuffer1");
         assertEquals("Error in converting ByteBuffer", ecall.getBytesBuffer(), ecallOut.getBytesBuffer());
@@ -816,7 +816,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecall.setEntity(entity);
         ecallDao.save(ecall);
         ECallEvent ecallOut = ecallDao.findById("ECallId_ByteBuffer1");
@@ -845,7 +845,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ECallEvent.AuthUsers au2 = new ECallEvent.AuthUsers();
         au2.setUserId("user1");
@@ -889,7 +889,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ECallEvent.AuthUsers au1 = new ECallEvent.AuthUsers();
         au1.setUserId("user1");
@@ -937,7 +937,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ECallEvent.AuthUsers au1 = new ECallEvent.AuthUsers();
         au1.setUserId("user1");
@@ -1012,7 +1012,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecall.setAuthorizedUsers(aus);
         ecallDao.save(ecall);
 
@@ -1023,7 +1023,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setRequestId("Request_2");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecall1.setAuthorizedUsers(aus1);
         ecallDao.save(ecall1);
 
@@ -1056,7 +1056,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall);
 
         ECallEvent ecall1 = new ECallEvent();
@@ -1066,7 +1066,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setRequestId("Request_2");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall1);
 
         ECallEvent ecallGot = ecallDao.findById("ECallId_1");
@@ -1094,7 +1094,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP_ONE);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall);
 
         // ecall2
@@ -1105,7 +1105,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP_TWO);
         ecall2.setVehicleId("Vehicle_1");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall2);
 
         // ecall3
@@ -1116,7 +1116,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall3.setRequestId("Request_3");
         ecall3.setTimestamp(NumericConstants.TIMESTAMP_THREE);
         ecall3.setVehicleId("Vehicle_2");
-        ecall3.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall3.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall3);
     }
 
@@ -1192,7 +1192,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         ecallDao.saveAll(ecall1);
 
@@ -1248,7 +1248,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         LocalDate localDate = LocalDate.of(NumericConstants.YEAR, NumericConstants.EIGHT, NumericConstants.NINETEEN);
         ecall.setLocalDate(localDate);
         ecallDao.save(ecall);
@@ -1265,7 +1265,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         LocalTime localTime = LocalTime.of(NumericConstants.TEN, NumericConstants.TEN, NumericConstants.TEN);
         ecall.setLocalTime(localTime);
         ecallDao.save(ecall);
@@ -1374,7 +1374,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
             ecalli.setRequestId("Request_" + i);
             ecalli.setTimestamp(NumericConstants.TIMESTAMP);
             ecalli.setVehicleId("Vehicle_" + i);
-            ecalli.setVersion(com.harman.ignite.domain.Version.V1_0);
+            ecalli.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
             ecallDao.save(ecalli);
         }
     }
@@ -1396,7 +1396,7 @@ public class IgniteBaseDAOCosmosDBIntegrationTest {
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
         ecall.setTargetDeviceId("device1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall);
         ECallEvent ecallGot = ecallDao.findById("ECallId_1");
         Assert.assertEquals(ecallGot.getEcallId(), ecall.getEcallId());

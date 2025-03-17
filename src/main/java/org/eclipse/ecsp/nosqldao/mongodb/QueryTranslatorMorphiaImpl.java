@@ -40,7 +40,6 @@
 
 package org.eclipse.ecsp.nosqldao.mongodb;
 
-import com.harman.ignite.entities.IgniteEntity;
 import com.mongodb.client.model.geojson.Point;
 import dev.morphia.AdvancedDatastore;
 import dev.morphia.geo.PointBuilder;
@@ -49,6 +48,7 @@ import dev.morphia.query.Query;
 import dev.morphia.query.Sort;
 import dev.morphia.query.experimental.filters.Filter;
 import dev.morphia.query.experimental.filters.Filters;
+import org.eclipse.ecsp.entities.IgniteEntity;
 import org.eclipse.ecsp.nosqldao.Coordinate;
 import org.eclipse.ecsp.nosqldao.IgniteCriteria;
 import org.eclipse.ecsp.nosqldao.IgniteCriteriaGroup;

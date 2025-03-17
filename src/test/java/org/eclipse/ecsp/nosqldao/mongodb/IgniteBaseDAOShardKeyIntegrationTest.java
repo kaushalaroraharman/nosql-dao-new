@@ -102,7 +102,7 @@ public class IgniteBaseDAOShardKeyIntegrationTest {
         ecall.setRequestId("Request_1");
         ecall.setTimestamp(NumericConstants.TIMESTAMP);
         ecall.setVehicleId("Vehicle_1");
-        ecall.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         ecallDao.save(ecall);
         ECallEvent ecallGot = ecallDao.findById("ECallId_1");
         Assert.assertEquals(ecallGot.getEcallId(), ecall.getEcallId());
@@ -119,7 +119,7 @@ public class IgniteBaseDAOShardKeyIntegrationTest {
         mockEvent.setRequestId("Request_1");
         mockEvent.setTimestamp(NumericConstants.TIMESTAMP);
         mockEvent.setVehicleId("Vehicle_1");
-        mockEvent.setVersion(com.harman.ignite.domain.Version.V1_0);
+        mockEvent.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
         mockDao.save(mockEvent);
         MockTestEvent mockGot = mockDao.findById("ECallId_1");
         Assert.assertEquals(mockGot.getId(), mockEvent.getId());

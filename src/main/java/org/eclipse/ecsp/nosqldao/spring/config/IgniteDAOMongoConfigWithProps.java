@@ -40,8 +40,6 @@
 
 package org.eclipse.ecsp.nosqldao.spring.config;
 
-import com.harman.ignite.utils.logger.IgniteLogger;
-import com.harman.ignite.utils.logger.IgniteLoggerFactory;
 import com.mongodb.MongoClientException;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoCredential;
@@ -57,6 +55,8 @@ import dev.morphia.Morphia;
 import org.eclipse.ecsp.nosqldao.NoSqlDatabaseType;
 import org.eclipse.ecsp.nosqldao.mongodb.MongoReadPreference;
 import org.eclipse.ecsp.nosqldao.utils.NumericConstants;
+import org.eclipse.ecsp.utils.logger.IgniteLogger;
+import org.eclipse.ecsp.utils.logger.IgniteLoggerFactory;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;

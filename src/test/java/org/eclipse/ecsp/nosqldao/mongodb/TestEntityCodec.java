@@ -40,8 +40,6 @@
 
 package org.eclipse.ecsp.nosqldao.mongodb;
 
-import com.harman.ignite.utils.logger.IgniteLogger;
-import com.harman.ignite.utils.logger.IgniteLoggerFactory;
 import org.bson.BsonReader;
 import org.bson.BsonType;
 import org.bson.BsonWriter;
@@ -53,6 +51,8 @@ import org.bson.codecs.StringCodec;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.eclipse.ecsp.nosqldao.ecall.TestEntity;
+import org.eclipse.ecsp.utils.logger.IgniteLogger;
+import org.eclipse.ecsp.utils.logger.IgniteLoggerFactory;
 
 /**
  * TestEntityCodec class.

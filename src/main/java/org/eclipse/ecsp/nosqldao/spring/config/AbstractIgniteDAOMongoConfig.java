@@ -40,9 +40,6 @@
 
 package org.eclipse.ecsp.nosqldao.spring.config;
 
-import com.harman.ignite.healthcheck.HealthMonitor;
-import com.harman.ignite.utils.logger.IgniteLogger;
-import com.harman.ignite.utils.logger.IgniteLoggerFactory;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.ServerAddress;
@@ -59,9 +56,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.bson.codecs.Codec;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
+import org.eclipse.ecsp.healthcheck.HealthMonitor;
 import org.eclipse.ecsp.nosqldao.NoSqlDatabaseType;
 import org.eclipse.ecsp.nosqldao.utils.Constants;
 import org.eclipse.ecsp.nosqldao.utils.PropertyNames;
+import org.eclipse.ecsp.utils.logger.IgniteLogger;
+import org.eclipse.ecsp.utils.logger.IgniteLoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -195,9 +195,9 @@ public abstract class AbstractIgniteDAOMongoConfig implements HealthMonitor {
 
     /**
      * The packages to map for Morphia.
-     * The default value is com.harman.ignite.
+     * The default value is org.eclipse.ecsp.
      */
-    @Value("${morphia.map.packages:#{com.harman.ignite}}")
+    @Value("${morphia.map.packages:#{org.eclipse.ecsp}}")
     protected String[] mapPackages;
 
     /**
