@@ -40,13 +40,13 @@
 
 package org.eclipse.ecsp.nosqldao.ecall;
 
-import com.harman.ignite.entities.AbstractIgniteEvent;
-import com.harman.ignite.entities.IgniteEvent;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Field;
 import dev.morphia.annotations.Id;
 import dev.morphia.annotations.Index;
 import dev.morphia.annotations.Indexes;
+import org.eclipse.ecsp.entities.AbstractIgniteEvent;
+import org.eclipse.ecsp.entities.IgniteEvent;
 
 import java.util.List;
 

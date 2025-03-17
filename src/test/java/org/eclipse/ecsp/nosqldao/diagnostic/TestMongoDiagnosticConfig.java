@@ -49,7 +49,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan(basePackages = { "org.eclipse.ecsp.nosqldao", "org.eclipse.ecsp.nosqldao.diagnostic",
-    "com.harman.ignite.utils.metrics" })
+    "org.eclipse.ecsp.utils.metrics" })
 public class TestMongoDiagnosticConfig {
 
     @Bean

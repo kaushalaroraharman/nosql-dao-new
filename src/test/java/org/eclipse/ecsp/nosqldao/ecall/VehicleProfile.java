@@ -40,9 +40,9 @@
 
 package org.eclipse.ecsp.nosqldao.ecall;
 
-import com.harman.ignite.domain.Version;
-import com.harman.ignite.entities.IgniteEntity;
 import dev.morphia.annotations.Entity;
+import org.eclipse.ecsp.domain.Version;
+import org.eclipse.ecsp.entities.IgniteEntity;
 
 import java.util.Map;
 

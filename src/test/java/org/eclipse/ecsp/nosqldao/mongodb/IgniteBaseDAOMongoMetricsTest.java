@@ -103,7 +103,7 @@ public class IgniteBaseDAOMongoMetricsTest {
         ecall1.setRequestId("Request_1");
         ecall1.setTimestamp(NumericConstants.TIMESTAMP);
         ecall1.setVehicleId("Vehicle_1");
-        ecall1.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall1.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         MockTestEvent ecall2 = new MockTestEvent();
         ecall2.setId("ECallId_UpdateAll_2");
@@ -112,7 +112,7 @@ public class IgniteBaseDAOMongoMetricsTest {
         ecall2.setRequestId("Request_2");
         ecall2.setTimestamp(NumericConstants.TIMESTAMP);
         ecall2.setVehicleId("Vehicle_2");
-        ecall2.setVersion(com.harman.ignite.domain.Version.V1_0);
+        ecall2.setVersion(org.eclipse.ecsp.domain.Version.V1_0);
 
         mockDao.saveAll(ecall1, ecall2);
 

@@ -40,9 +40,9 @@
 
 package org.eclipse.ecsp.nosqldao.utils;
 
-import com.harman.ignite.utils.metrics.GenericIgniteHistogram;
 import io.prometheus.client.Counter;
 import io.prometheus.client.Gauge;
+import org.eclipse.ecsp.utils.metrics.GenericIgniteHistogram;
 
 import java.util.function.Supplier;
 

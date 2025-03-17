@@ -40,10 +40,10 @@
 
 package org.eclipse.ecsp.nosqldao.diagnostic;
 
-import com.harman.ignite.diagnostic.DiagnosticData;
-import com.harman.ignite.diagnostic.DiagnosticResult;
 import dev.morphia.AdvancedDatastore;
 import org.bson.codecs.configuration.CodecConfigurationException;
+import org.eclipse.ecsp.diagnostic.DiagnosticData;
+import org.eclipse.ecsp.diagnostic.DiagnosticResult;
 import org.eclipse.ecsp.nosqldao.MongoDiagnosticReporterImpl;
 import org.eclipse.ecsp.nosqldao.ecall.EcallDAO;
 import org.eclipse.ecsp.nosqldao.mongodb.BytesBuffer;

@@ -40,8 +40,6 @@
 
 package org.eclipse.ecsp.nosqldao.utils;
 
-import com.harman.ignite.utils.logger.IgniteLogger;
-import com.harman.ignite.utils.logger.IgniteLoggerFactory;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -54,6 +52,8 @@ import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 import org.eclipse.ecsp.nosqldao.spring.config.AbstractIgniteDAOMongoConfig;
+import org.eclipse.ecsp.utils.logger.IgniteLogger;
+import org.eclipse.ecsp.utils.logger.IgniteLoggerFactory;
 import org.junit.rules.ExternalResource;
 
 import java.util.Map;

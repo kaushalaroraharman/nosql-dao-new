@@ -40,7 +40,7 @@
 
 package org.eclipse.ecsp.nosqldao;
 
-import com.harman.ignite.entities.IgniteEntity;
+import org.eclipse.ecsp.entities.IgniteEntity;
 import reactor.core.publisher.Flux;
 
 import java.util.List;

@@ -84,7 +84,7 @@
         <java.version>17</java.version>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.13.2</junit.version>
-        <utils.version>1.0.0</utils.version>
+        <utils.version>1.1.0</utils.version>
         <morphia.version>2.2.3</morphia.version>
         <embedded.mongo.version>3.4.3</embedded.mongo.version>
         <maven.surefire.version>2.18.1</maven.surefire.version>
@@ -119,8 +119,8 @@
             --add-opens=java.sql/java.sql=ALL-UNNAMED
         </java.17.options>
         <sonar.coverage.exclusions>
-            com/harman/ignite/dao/mongodb/UnsupportedDatabaseTypeException.java,
-            com/harman/ignite/dao/NoSqlDatabaseType.java
+            org/eclipse/ecsp/dao/mongodb/UnsupportedDatabaseTypeException.java,
+            org/eclipse/ecsp/dao/NoSqlDatabaseType.java
 	    </sonar.coverage.exclusions>
 	</properties>
 
@@ -398,8 +398,8 @@
                 <version>0.8.8</version>
                 <configuration>
                     <excludes>
-                        <exclude>com/harman/ignite/dao/mongodb/UnsupportedDatabaseTypeException.class</exclude>
-                        <exclude>com/harman/ignite/dao/NoSqlDatabaseType.class</exclude>
+                        <exclude>org/eclipse/ecsp/dao/mongodb/UnsupportedDatabaseTypeException.class</exclude>
+                        <exclude>org/eclipse/ecsp/dao/NoSqlDatabaseType.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>
