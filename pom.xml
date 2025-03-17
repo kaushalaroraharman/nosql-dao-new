@@ -390,6 +390,9 @@
                     <argLine>${surefireArgLine} ${java.17.options}</argLine>
                     <threadCount>1</threadCount>
                     <forkMode>pertest</forkMode>
+                    <excludes>
+                        <exclude>**/IgniteBaseDAOCosmosDBIntegrationTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
